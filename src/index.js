@@ -7,6 +7,6 @@ const fastify = Fastify({
 
 dotenv.config();
 
-fastify.register(await import('./routes/user.route.js'), { prefix: '/v1' });
+fastify.register(await import('./routes/user.route.js'));
 await fastify.listen({ port: 3000 });
 fastify.log.info(`Server listening on ${fastify.server.address().port}`);

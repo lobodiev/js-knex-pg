@@ -1,14 +1,16 @@
 import UserRepository from "../repositories/user.repository.js";
 import UserDto from "../dto/user.dto.js";
 
+const repository = new UserRepository();
+
 class UserService {
 
   async findAll(offset = 0, limit = 10, sort = 'desc') {
-    return await UserRepository.findAll(offset, limit, sort);
+    return await repository.findAll(offset, limit, sort);
   }
 
   async findOne(id) {
-    return await UserRepository.findOne(id);
+    return await repository.findOne(id);
   }
 
   async create(data) {
@@ -16,7 +18,7 @@ class UserService {
     userDto.name = data.name;
     userDto.address = data.address;
 
-    return await UserRepository.create(userDto);
+    return await repository.create(userDto);
   }
 
   async update(id, data) {
@@ -24,11 +26,11 @@ class UserService {
     userDto.name = data.name;
     userDto.address = data.address;
 
-    return await UserRepository.update(id, userDto);
+    return await repository.update(id, userDto);
   }
 
   async delete(id) {
-    return await UserRepository.delete(id);
+    return await repository.delete(id);
   }
 
 }

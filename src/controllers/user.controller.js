@@ -1,11 +1,13 @@
 import UserService from "../services/user.service.js";
 
+const service = new UserService();
+
 class UserController {
 
   async findAll(request, reply) {
     const { offset, limit, sort } = request.query;
 
-    const data = await UserService.findAll(offset, limit, sort);
+    const data = await service.findAll(offset, limit, sort);
 
     reply
       .code(200)
@@ -20,7 +22,7 @@ class UserController {
   }
 
   async findOne(request, reply) {
-    const data = await UserService.findOne(request.params.id);
+    const data = await service.findOne(request.params.id);
 
     reply
       .code(200)
@@ -35,7 +37,7 @@ class UserController {
   }
 
   async create(request, reply) {
-    await UserService.create(request.body);
+    await service.create(request.body);
 
     reply
       .code(201)
@@ -49,7 +51,7 @@ class UserController {
   }
 
   async update(request, reply) {
-    await UserService.update(request.params.id, request.body);
+    await service.update(request.params.id, request.body);
 
     reply
       .code(204)
@@ -63,7 +65,7 @@ class UserController {
   }
 
   async remove(request, reply) {
-    await UserService.delete(request.params.id);
+    await service.delete(request.params.id);
 
     reply
       .code(204)

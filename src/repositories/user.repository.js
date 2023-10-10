@@ -1,4 +1,6 @@
-import * as db from '../config/index.js';
+import knex from '../config/index.js';
+
+const db = knex();
 
 class UserRepository {
   async findAll(offset, limit, sort) {

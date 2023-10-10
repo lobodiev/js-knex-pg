@@ -1,6 +1,6 @@
 import knex from 'knex';
 
-knex({
+const db = knex({
   client: `pg`,
   pool: { min: 0, max: 10 },
   debug: false,
@@ -13,4 +13,4 @@ knex({
   },
 });
 
-export default knex;
+export default db;
